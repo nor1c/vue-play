@@ -52,6 +52,15 @@
                 </template>
             </BaseLayout>
         </div>
+        <hr>
+        <div>
+            <h3>Scoped Slot</h3>
+            <TodoList>
+                <template v-slot:default="slotProps">
+                    <span style="color:green">{{ slotProps.item }}</span>
+                </template>
+            </TodoList>
+        </div>
     </div>
 </template>
 
@@ -60,13 +69,15 @@ import TodoItem from '../components/TodoItem.vue'
 import HelloWorldProp from '../components/HelloWorldProp.vue'
 import TodoButton from '../components/TodoButton.vue'
 import BaseLayout from '../layouts/BaseLayout.vue'
+import TodoList from '../components/TodoList.vue'
 
 export default {
     components: {
         TodoItem,
         HelloWorldProp,
         TodoButton,
-        BaseLayout
+        BaseLayout,
+        TodoList
     },
     data() {
         return {
