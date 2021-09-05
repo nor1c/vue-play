@@ -36,7 +36,7 @@
         <div>
             <h3>v-slot</h3>
             <TodoButton>
-                Add Todo
+                {{ addButton }}
             </TodoButton>
         </div>
     </div>
@@ -57,6 +57,7 @@ export default {
         return {
             helloWorld: 'Hello World!',
             showHello: true,
+            addButton: 'Add Todo',
             todos: [
                 { id: 1, name: 'Learn Javascript' },
                 { id: 2, name: 'Learn Vue.JS' },
