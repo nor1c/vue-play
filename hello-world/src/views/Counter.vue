@@ -1,10 +1,13 @@
 <template>
     <div id="counter">
-        Counter: {{ counter }}
+        <keep-alive>
+            <div>Counter: {{ counter }}</div>
+        </keep-alive>
     </div>
 </template>
 
 <script>
+import { KeepAlive } from 'vue'
 export default {
     data() {
         return {

@@ -24,7 +24,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/counter',
     name: 'Counter App',
     component: () => import('../views/Counter.vue')
-  }
+  },
 ]
 
 const router = createRouter({
