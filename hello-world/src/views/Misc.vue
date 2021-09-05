@@ -39,6 +39,19 @@
                 {{ addButton }}
             </TodoButton>
         </div>
+        <hr>
+        <div>
+            <h3>Base Layout with Named Slot</h3>
+            <BaseLayout>
+                Main content
+                <template v-slot:header>
+                    The header
+                </template>
+                <template v-slot:footer>
+                    The footer
+                </template>
+            </BaseLayout>
+        </div>
     </div>
 </template>
 
@@ -46,12 +59,14 @@
 import TodoItem from '../components/TodoItem.vue'
 import HelloWorldProp from '../components/HelloWorldProp.vue'
 import TodoButton from '../components/TodoButton.vue'
+import BaseLayout from '../layouts/BaseLayout.vue'
 
 export default {
     components: {
         TodoItem,
         HelloWorldProp,
-        TodoButton
+        TodoButton,
+        BaseLayout
     },
     data() {
         return {
