@@ -17,7 +17,8 @@ const routes: Array<RouteRecordRaw> = [
   },
   { path: '/hello-world', name: 'HelloWorld', component: () => import('../views/HelloWorld.vue') },
   { path: '/counter', name: 'Counter App', component: () => import('../views/Counter.vue') },
-  { path: '/handling-user-input', name: 'Handling user input', component: () => import('../views/UserInput.vue') }
+  { path: '/handling-user-input', name: 'Handling user input', component: () => import('../views/UserInput.vue') },
+  { path: '/misc', name: 'Misc', component: () => import('../views/Misc.vue') },
 ]
 
 const router = createRouter({

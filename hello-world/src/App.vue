@@ -4,7 +4,8 @@
     <router-link to="/about">About</router-link> |
     <router-link to="/hello-world">Greet</router-link> |
     <router-link to="/counter">Counter</router-link> | 
-    <router-link to="/handling-user-input">Handling User Input</router-link>
+    <router-link to="/handling-user-input">Handling User Input</router-link> | 
+    <router-link to="/misc">Miscellaneous</router-link>
   </div>
   <router-view/>
 </template>
