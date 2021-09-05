@@ -26,17 +26,32 @@
             </ol>
             <HelloWorldProp :helloText="helloWorld"></HelloWorldProp>
         </div>
+        <hr>
+        <div>
+            <h3>Directives</h3>
+            <div v-text="vtext"></div>
+            <div v-show="showHello">{{ helloWorld }}</div>
+        </div>
+        <hr>
+        <div>
+            <h3>v-slot</h3>
+            <TodoButton>
+                Add Todo
+            </TodoButton>
+        </div>
     </div>
 </template>
 
 <script>
 import TodoItem from '../components/TodoItem.vue'
 import HelloWorldProp from '../components/HelloWorldProp.vue'
+import TodoButton from '../components/TodoButton.vue'
 
 export default {
     components: {
         TodoItem,
         HelloWorldProp,
+        TodoButton
     },
     data() {
         return {
