@@ -171,6 +171,20 @@
                 Multiple Values
             </div>
         </div>
+
+        <hr>
+        <div>
+            <h3>List Rendering Object</h3>
+            <ol>
+                <li v-for="(item, name, index) in todos" :key="index">
+                    {{ index }}. {{ name }}. {{ item }}
+                </li>
+            </ol>
+        </div>
+        <div>
+            <h3>v-for with Component</h3>
+            <VForComponent v-for="(todo, index) in todos" :key="index" :index="index" :item="todo"></VForComponent>
+        </div>
     </div>
 </template>
 
@@ -181,6 +195,7 @@ import TodoButton from '../components/TodoButton.vue'
 import BaseLayout from '../layouts/BaseLayout.vue'
 import TodoList from '../components/TodoList.vue'
 import DynamicArgument from '../components/DynamicArgument.vue'
+import VForComponent from '../components/VForComponent.vue'
 
 export default {
     components: {
@@ -189,7 +204,8 @@ export default {
         TodoButton,
         BaseLayout,
         TodoList,
-        DynamicArgument
+        DynamicArgument,
+        VForComponent
     },
     data: () => ({
         helloWorld: 'Hello World!',
