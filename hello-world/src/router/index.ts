@@ -22,6 +22,7 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/lifecycle-hooks', name: 'Hooks', component: () => import('../views/Hooks.vue') },
   { path: '/computed-properties', name: 'Computed Properties', component: () => import('../views/ComputedProperties.vue') },
   { path: '/watchers', name: 'Watchers', component: () => import('../views/Watchers.vue') },
+  { path: '/simple-todo-list-app', name: 'Simple To-do List App', component: () => import('../views/TodoListApp.vue') },
 ]
 
 const router = createRouter({

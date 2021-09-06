@@ -8,6 +8,7 @@
     <router-link to="/lifecycle-hooks">Hooks</router-link> | 
     <router-link to="/computed-properties">Computed</router-link> | 
     <router-link to="/watchers">Watchers</router-link> | 
+    <router-link to="/simple-todo-list-app">Todo App</router-link> | 
     <router-link to="/misc">Misc</router-link>
   </div>
   <router-view/>
