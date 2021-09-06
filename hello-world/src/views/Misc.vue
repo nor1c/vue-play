@@ -116,6 +116,13 @@
             <p>{{ rawHtml }}</p>
             <p v-html="rawHtml"></p>
         </div>
+
+        <hr>
+        <div>
+            <h3>Attributes</h3>
+            <div :id="dynamicId">test</div> <!-- <div id="1".. -->
+            <button :disabled="isButtonDisabled">Button</button> <!-- the button disabled -->
+        </div>
     </div>
 </template>
 
@@ -148,7 +155,9 @@ export default {
             students: [
                 { id: 1, name: 'Rick' },
                 { id: 2, name: 'Morty' }
-            ]
+            ],
+            dynamicId: 1,
+            isButtonDisabled: true
         }
     }
 }
