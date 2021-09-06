@@ -129,6 +129,12 @@
             <h3>Arguments</h3>
             <a :href="'https://google.com'">href url</a>
             <a href="#" @click="sayHello()">click me to print hello world</a>
+
+            <div>
+                <h3>Dynamic Argument</h3>
+                <h2>{{ thisWillBeChanged }}</h2>
+                <dynamic-argument @changeText="changeTheText($event)"></dynamic-argument>
+            </div>
         </div>
     </div>
 </template>
@@ -139,6 +145,7 @@ import HelloWorldProp from '../components/HelloWorldProp.vue'
 import TodoButton from '../components/TodoButton.vue'
 import BaseLayout from '../layouts/BaseLayout.vue'
 import TodoList from '../components/TodoList.vue'
+import DynamicArgument from '../components/DynamicArgument.vue'
 
 export default {
     components: {
@@ -146,13 +153,15 @@ export default {
         HelloWorldProp,
         TodoButton,
         BaseLayout,
-        TodoList
+        TodoList,
+        DynamicArgument
     },
     data: () => ({
         helloWorld: 'Hello World!',
         rawHtml: '<span style="color:red">This should be red</span>',
         showHello: true,
         addButton: 'Add Todo',
+        thisWillBeChanged: 'This will be changed once you clicked this button below',
         todos: [
             { id: 1, name: 'Learn Javascript' },
             { id: 2, name: 'Learn Vue.JS' },
@@ -166,8 +175,11 @@ export default {
         isButtonDisabled: true
     }),
     methods: {
-        sayHello: () => {
+        sayHello: function () {
             alert('hello world')
+        },
+        changeTheText: function (updatedText) {
+            this.thisWillBeChanged = updatedText
         }
     }
 }
