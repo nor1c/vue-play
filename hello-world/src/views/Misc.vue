@@ -102,6 +102,12 @@
                     <span>{{ item }} {{ renamedProps }}</span>
                 </template>
             </TodoList>
+
+            <br>
+            <h3>Define fallbacks</h3>
+            <TodoList v-slot="{ item, undefinedItem = 'This is an undefined Value' }">
+                <span>{{ item }} {{ undefinedItem }}</span>
+            </TodoList>
         </div>
     </div>
 </template>
