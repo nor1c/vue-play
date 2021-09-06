@@ -93,6 +93,15 @@
                     <span style="color:red">{{ otherSlotProps.item }}</span>
                 </template>
             </TodoList>
+
+            <br>
+            <h3>Desctructing Slot Props</h3>
+            <!-- ES2015 descrution -->
+            <TodoList>
+                <template v-slot="{ item, item: renamedProps }">
+                    <span>{{ item }} {{ renamedProps }}</span>
+                </template>
+            </TodoList>
         </div>
     </div>
 </template>
