@@ -9,22 +9,22 @@ export default {
     data: () => ({
         hooks: 'Hooks'
     }),
-    beforeCreate: () => {
+    beforeCreate() {
         alert('Before create...')
     },
-    created: () => {
+    created() {
         alert('Created!')
     },
-    beforeMount: () => {
+    beforeMount() {
         alert('Before mount...')
     },
-    mounted: () => {
+    mounted() {
         alert('Mounted!')
     },
-    beforeUnmount: () => {
+    beforeUnmount() {
         alert('Before unmount...')
     },
-    unmounted: () => {
+    unmounted() {
         alert('Unmounted!')
     } 
 }

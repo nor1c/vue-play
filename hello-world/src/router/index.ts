@@ -20,6 +20,7 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/handling-user-input', name: 'Handling user input', component: () => import('../views/UserInput.vue') },
   { path: '/misc', name: 'Misc', component: () => import('../views/Misc.vue') },
   { path: '/lifecycle-hooks', name: 'Hooks', component: () => import('../views/Hooks.vue') },
+  { path: '/computed-properties', name: 'Computed Properties', component: () => import('../views/ComputedProperties.vue') },
 ]
 
 const router = createRouter({
