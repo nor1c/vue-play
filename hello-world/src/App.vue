@@ -7,6 +7,7 @@
     <router-link to="/handling-user-input">Handling Input</router-link> | 
     <router-link to="/lifecycle-hooks">Hooks</router-link> | 
     <router-link to="/computed-properties">Computed</router-link> | 
+    <router-link to="/watchers">Watchers</router-link> | 
     <router-link to="/misc">Misc</router-link>
   </div>
   <router-view/>

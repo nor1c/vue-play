@@ -21,6 +21,7 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/misc', name: 'Misc', component: () => import('../views/Misc.vue') },
   { path: '/lifecycle-hooks', name: 'Hooks', component: () => import('../views/Hooks.vue') },
   { path: '/computed-properties', name: 'Computed Properties', component: () => import('../views/ComputedProperties.vue') },
+  { path: '/watchers', name: 'Watchers', component: () => import('../views/Watchers.vue') },
 ]
 
 const router = createRouter({
