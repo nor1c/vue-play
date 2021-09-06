@@ -123,6 +123,13 @@
             <div :id="dynamicId">test</div> <!-- <div id="1".. -->
             <button :disabled="isButtonDisabled">Button</button> <!-- the button disabled -->
         </div>
+
+        <hr>
+        <div>
+            <h3>Arguments</h3>
+            <a :href="'https://google.com'">href url</a>
+            <a href="#" @click="sayHello()">click me to print hello world</a>
+        </div>
     </div>
 </template>
 
@@ -141,23 +148,26 @@ export default {
         BaseLayout,
         TodoList
     },
-    data() {
-        return {
-            helloWorld: 'Hello World!',
-            rawHtml: '<span style="color:red">This should be red</span>',
-            showHello: true,
-            addButton: 'Add Todo',
-            todos: [
-                { id: 1, name: 'Learn Javascript' },
-                { id: 2, name: 'Learn Vue.JS' },
-                { id: 3, name: 'Learn Typescript' }
-            ],
-            students: [
-                { id: 1, name: 'Rick' },
-                { id: 2, name: 'Morty' }
-            ],
-            dynamicId: 1,
-            isButtonDisabled: true
+    data: () => ({
+        helloWorld: 'Hello World!',
+        rawHtml: '<span style="color:red">This should be red</span>',
+        showHello: true,
+        addButton: 'Add Todo',
+        todos: [
+            { id: 1, name: 'Learn Javascript' },
+            { id: 2, name: 'Learn Vue.JS' },
+            { id: 3, name: 'Learn Typescript' }
+        ],
+        students: [
+            { id: 1, name: 'Rick' },
+            { id: 2, name: 'Morty' }
+        ],
+        dynamicId: 1,
+        isButtonDisabled: true
+    }),
+    methods: {
+        sayHello: () => {
+            alert('hello world')
         }
     }
 }
