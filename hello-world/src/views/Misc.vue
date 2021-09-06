@@ -154,6 +154,23 @@
                 Mix Array & Object
             </div>
         </div>
+
+        <hr>
+        <div>
+            <h3>Binding Inline Styles</h3>
+            <div :style="{ color: 'green', fontFamily: fontFamily }">
+                Object Syntax
+            </div>
+            <div :style="styleObject">
+                Bind Array Style Object
+            </div>
+            <div :style="[styleObject, textItalic]">
+                Array Syntax
+            </div>
+            <div :style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }">
+                Multiple Values
+            </div>
+        </div>
     </div>
 </template>
 
@@ -194,7 +211,16 @@ export default {
         isTextBold: true,
         hasError: true,
         boldClass: 'textBold',
-        errorClass: 'text-danger'
+        errorClass: 'text-danger',
+        fontFamily: 'Poppins',
+        styleObject: {
+            color: 'blue',
+            fontWeight: 'bold',
+            fontFamily: 'Poppins'
+        },
+        textItalic: {
+            fontStyle: 'italic',
+        }
     }),
     computed: {
         classObject() {
