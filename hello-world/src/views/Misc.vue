@@ -136,6 +136,24 @@
                 <dynamic-argument @changeText="changeTheText($event)"></dynamic-argument>
             </div>
         </div>
+
+        <hr>
+        <div>
+            <h1>Class & Style Binding</h1>
+            <h3>BInding HTML Classes</h3>
+            <div :class="{ textBold: isTextBold, 'text-danger': hasError }" @click="isTextBold = !isTextBold">
+                Click to toggle font weight
+            </div>
+            <div :class="classObject">
+                Class Object
+            </div>
+            <div :class="[boldClass, errorClass]">
+                Bind Array Class
+            </div>
+            <div :class="[{ textBold: isTextBold }, errorClass]">
+                Mix Array & Object
+            </div>
+        </div>
     </div>
 </template>
 
@@ -172,8 +190,20 @@ export default {
             { id: 2, name: 'Morty' }
         ],
         dynamicId: 1,
-        isButtonDisabled: true
+        isButtonDisabled: true,
+        isTextBold: true,
+        hasError: true,
+        boldClass: 'textBold',
+        errorClass: 'text-danger'
     }),
+    computed: {
+        classObject() {
+            return {
+                textBold: this.isTextBold,
+                'text-danger': this.hasError
+            }
+        }
+    },
     methods: {
         sayHello: function () {
             alert('hello world')
@@ -184,3 +214,12 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.textBold {
+    font-weight: bold;
+}
+.text-danger {
+    color: red;
+}
+</style>
