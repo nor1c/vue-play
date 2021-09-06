@@ -109,6 +109,13 @@
                 <span>{{ item }} {{ undefinedItem }}</span>
             </TodoList>
         </div>
+
+        <hr>
+        <div>
+            <h3>Raw HTML directive</h3>
+            <p>{{ rawHtml }}</p>
+            <p v-html="rawHtml"></p>
+        </div>
     </div>
 </template>
 
@@ -130,6 +137,7 @@ export default {
     data() {
         return {
             helloWorld: 'Hello World!',
+            rawHtml: '<span style="color:red">This should be red</span>',
             showHello: true,
             addButton: 'Add Todo',
             todos: [

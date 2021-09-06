@@ -5,10 +5,16 @@
     <router-link to="/hello-world">Greet</router-link> |
     <router-link to="/counter">Counter</router-link> | 
     <router-link to="/handling-user-input">Handling User Input</router-link> | 
+    <router-link to="/lifecycle-hooks">Hooks</router-link> | 
     <router-link to="/misc">Miscellaneous</router-link>
   </div>
   <router-view/>
 </template>
+
+<script>
+export default {
+}
+</script>
 
 <style>
 #app {

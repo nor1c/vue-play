@@ -19,6 +19,7 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/counter', name: 'Counter App', component: () => import('../views/Counter.vue') },
   { path: '/handling-user-input', name: 'Handling user input', component: () => import('../views/UserInput.vue') },
   { path: '/misc', name: 'Misc', component: () => import('../views/Misc.vue') },
+  { path: '/lifecycle-hooks', name: 'Hooks', component: () => import('../views/Hooks.vue') },
 ]
 
 const router = createRouter({
