@@ -1,8 +1,8 @@
 <template>
   <div>
     <div>
-      {{ user }}
-      {{ todoLength }}
+      <p>{{ user }}</p>
+      <p>Todo length from child: {{ todoLength }}</p>
     </div>
   </div>
 </template>
