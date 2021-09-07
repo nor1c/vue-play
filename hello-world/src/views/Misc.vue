@@ -217,6 +217,16 @@
                 </button>
                 <component :is="currentTabComponent"></component>
             </div>
+
+            <h3>Dynamic Components with keep-alive</h3>
+            <div>
+                <button v-for="(tab, index) in tabs" :key="index" @click="currentTab = tab">
+                    {{ tab }}
+                </button>
+                <keep-alive>
+                    <component :is="currentTabComponent"></component>
+                </keep-alive>
+            </div>
         </div>
 
         <hr>
