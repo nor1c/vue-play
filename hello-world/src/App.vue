@@ -10,6 +10,7 @@
     <router-link to="/watchers">Watchers</router-link> | 
     <router-link to="/simple-todo-list-app">Todo App</router-link> | 
     <router-link to="/custom-events">Custom Events</router-link> | 
+    <router-link to="/provide-inject">Provide/Inject</router-link> | 
     <router-link to="/misc">Misc</router-link>
   </div>
   <router-view/>
