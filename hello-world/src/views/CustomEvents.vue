@@ -17,15 +17,24 @@
             <EmitUpdate v-model:title="bookTitle"></EmitUpdate>
             {{ bookTitle }}
         </div>
+
+        <hr>
+        <div>
+            <h3>Handling v-model Modifier</h3>
+            <EmitModifier v-model.capitalize="bookTitle"></EmitModifier>
+            {{ bookTitle }}
+        </div>
     </div>
 </template>
 
 <script>
 import EmitUpdate from '../components/EmitUpdate.vue'
+import EmitModifier from '../components/EmitModifier.vue'
 
 export default {
     components: {
-        EmitUpdate
+        EmitUpdate,
+        EmitModifier
     },
     emits: {
         submit: ({ email, password }) => {
