@@ -10,11 +10,23 @@
                 </form>
             </div>
         </div>
+
+        <hr>
+        <div>
+            <h3>v-model Arguments</h3>
+            <EmitCompOne v-model:title="bookTitle"></EmitCompOne>
+            {{ bookTitle }}
+        </div>
     </div>
 </template>
 
 <script>
+import EmitCompOne from '../components/EmitCompOne.vue'
+
 export default {
+    components: {
+        EmitCompOne
+    },
     emits: {
         submit: ({ email, password }) => {
             if (email && password) {
@@ -24,13 +36,14 @@ export default {
                 console.warn('Invalid submit event payload!')
                 return false
             }
-        }
+        },
     },
     data: () => ({
         form: {
             email: '',
             password: ''
-        }
+        },
+        bookTitle: 'Learn Vue.JS',
     }),
     methods: {
         submitForm() {
