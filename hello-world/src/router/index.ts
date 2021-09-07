@@ -23,6 +23,7 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/computed-properties', name: 'Computed Properties', component: () => import('../views/ComputedProperties.vue') },
   { path: '/watchers', name: 'Watchers', component: () => import('../views/Watchers.vue') },
   { path: '/simple-todo-list-app', name: 'Simple To-do List App', component: () => import('../views/TodoListApp.vue') },
+  { path: '/custom-events', name: 'Custom Events', component: () => import('../views/CustomEvents.vue') },
 ]
 
 const router = createRouter({
