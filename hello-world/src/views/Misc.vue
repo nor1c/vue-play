@@ -181,14 +181,42 @@
                 </li>
             </ol>
         </div>
+
+        <hr>
         <div>
             <h3>v-for with Component</h3>
             <VForComponent v-for="(todo, index) in todos" :key="index" :index="index" :item="todo"></VForComponent>
         </div>
 
+        <hr>
         <div>
             <h3>Multiple Event Handlers</h3>
             <button @click="one('one'), two('two')">Click me</button>
+        </div>
+
+        <hr>
+        <div>
+            <h3>v-model.lazy</h3>
+            <input type="text" v-model.lazy="msg">
+            {{ msg }}
+
+            <h3>v-model.number</h3>
+            <input type="number" v-model.number="age">
+            {{ age }}
+
+            <h3>v-model.trim</h3>
+            <input v-model.trim="msg">
+        </div>
+
+        <hr>
+        <div>
+            <h3>Dynamic Components</h3>
+            <div>
+                <button v-for="(tab, index) in tabs" :key="index" @click="currentTab = tab">
+                    {{ tab }}
+                </button>
+                <component :is="currentTabComponent"></component>
+            </div>
         </div>
     </div>
 </template>
@@ -201,6 +229,8 @@ import BaseLayout from '../layouts/BaseLayout.vue'
 import TodoList from '../components/TodoList.vue'
 import DynamicArgument from '../components/DynamicArgument.vue'
 import VForComponent from '../components/VForComponent.vue'
+import Tabhome from '../components/Tabhome.vue'
+import Tabposts from '../components/Tabposts.vue'
 
 export default {
     components: {
@@ -210,7 +240,8 @@ export default {
         BaseLayout,
         TodoList,
         DynamicArgument,
-        VForComponent
+        VForComponent,
+        Tabhome, Tabposts,
     },
     data: () => ({
         helloWorld: 'Hello World!',
@@ -218,6 +249,8 @@ export default {
         showHello: true,
         addButton: 'Add Todo',
         thisWillBeChanged: 'This will be changed once you clicked this button below',
+        msg: '',
+        age: 0,
         todos: [
             { id: 1, name: 'Learn Javascript' },
             { id: 2, name: 'Learn Vue.JS' },
@@ -241,7 +274,9 @@ export default {
         },
         textItalic: {
             fontStyle: 'italic',
-        }
+        },
+        currentTab: 'home',
+        tabs: ['home', 'posts']
     }),
     computed: {
         classObject() {
@@ -249,6 +284,9 @@ export default {
                 textBold: this.isTextBold,
                 'text-danger': this.hasError
             }
+        },
+        currentTabComponent() {
+            return 'Tab' + this.currentTab
         }
     },
     methods: {
