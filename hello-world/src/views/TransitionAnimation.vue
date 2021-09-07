@@ -2,12 +2,21 @@
   <div>
     <div>
       <h3>Class-based Animations & Transitions</h3>
-      <div id="demo">
+      <div>
         Push this button to do something you shouldn't be doing:
         <div :class="{ shake: noActivated }">
           <button @click="noActivated = !noActivated">Click me</button>
           <span v-if="noActivated">Oh no!</span>
         </div>
+      </div>
+    </div>
+
+    <hr>
+    <div @mousemove="xCoordinate" :style="{ backgroundColor: `hsl(${x}, 80%, 50%)` }" class="movearea">
+      <h3>Transition with Style Bindings</h3>
+      <div>
+        <h3>Move your mouse accross the screen</h3>
+        <p>x: {{ x }}</p>
       </div>
     </div>
   </div>
@@ -16,8 +25,14 @@
 <script>
 export default {
   data: () => ({
-    noActivated: false
-  })
+    noActivated: false,
+    x: 0
+  }),
+  methods: {
+    xCoordinate(e) {
+      this.x = e.clientX
+    }
+  }
 }
 </script>
 
@@ -50,5 +65,8 @@ export default {
   60% {
     transform: translate3d(4px, 0, 0);
   }
+}
+.movearea {
+  transition: 0.2s background-color ease;
 }
 </style>
