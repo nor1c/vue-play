@@ -185,6 +185,11 @@
             <h3>v-for with Component</h3>
             <VForComponent v-for="(todo, index) in todos" :key="index" :index="index" :item="todo"></VForComponent>
         </div>
+
+        <div>
+            <h3>Multiple Event Handlers</h3>
+            <button @click="one('one'), two('two')">Click me</button>
+        </div>
     </div>
 </template>
 
@@ -252,6 +257,12 @@ export default {
         },
         changeTheText: function (updatedText) {
             this.thisWillBeChanged = updatedText
+        },
+        one: function () {
+            alert('one')
+        },
+        two: function () {
+            alert('two')
         }
     }
 }

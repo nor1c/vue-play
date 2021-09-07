@@ -4,12 +4,14 @@
             <input type="text" v-model="newTodoText" placeholder="New Todo">
             <button>Add</button>
         </form>
-        <TodoListItem 
-            v-for="(todo, index) in todos" 
-            :key="index" 
-            :item="todo"
-            @remove="todos.splice(index, 1)"
-        ></TodoListItem>
+        <ul>
+            <TodoListItem 
+                v-for="(todo, index) in todos" 
+                :key="index" 
+                :item="todo"
+                @remove="todos.splice(index, 1)"
+            ></TodoListItem>
+        </ul>
     </div>
 </template>
 
