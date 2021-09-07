@@ -231,6 +231,14 @@
 
         <hr>
         <div>
+            <h3>Async Components</h3>
+            <div>
+                <async-component></async-component>
+            </div>
+        </div>
+
+        <hr>
+        <div>
             <h3>Select Option Attribute Inheritance</h3>
             <div>
                 <DatePicker @change="showDatePickerChange"></DatePicker>
@@ -240,6 +248,8 @@
 </template>
 
 <script>
+import { defineAsyncComponent } from 'vue'
+
 import TodoItem from '../components/TodoItem.vue'
 import HelloWorldProp from '../components/HelloWorldProp.vue'
 import TodoButton from '../components/TodoButton.vue'
@@ -250,6 +260,7 @@ import VForComponent from '../components/VForComponent.vue'
 import Tabhome from '../components/Tabhome.vue'
 import Tabposts from '../components/Tabposts.vue'
 import DatePicker from '../components/DatePicker.vue'
+import AsyncComponent from '../components/AsyncComponent.vue'
 
 export default {
     components: {
@@ -261,7 +272,15 @@ export default {
         DynamicArgument,
         VForComponent,
         Tabhome, Tabposts,
-        DatePicker
+        DatePicker,
+        'async-component': defineAsyncComponent(() => (
+            new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(import('../components/AsyncComponent.vue'))
+                }, 500);
+            })
+        )),
+        AsyncComponent
     },
     data: () => ({
         helloWorld: 'Hello World!',
