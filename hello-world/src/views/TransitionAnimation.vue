@@ -19,6 +19,21 @@
         <p>x: {{ x }}</p>
       </div>
     </div>
+
+    <hr>
+    <div>
+      <h1>Enter & Leave Transitions</h1>
+    </div>
+    <br>
+    <div>
+      <h3>Transitioning Single Elements/Components</h3>
+      <div>
+        <button @click="show = !show">Toggle</button>
+        <transition name="fade">
+          <p v-if="show">hello</p>
+        </transition>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -26,7 +41,8 @@
 export default {
   data: () => ({
     noActivated: false,
-    x: 0
+    x: 0,
+    show: false
   }),
   methods: {
     xCoordinate(e) {
@@ -68,5 +84,14 @@ export default {
 }
 .movearea {
   transition: 0.2s background-color ease;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
