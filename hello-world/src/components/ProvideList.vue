@@ -15,8 +15,11 @@ export default {
   data: () => ({
     todos: ['Learn Vue.JS', 'Learn Composition API']
   }),
-  provide: {
-    user: 'John Doe'
+  provide() {
+    return {
+      user: 'John Doe',
+      todoLength: this.todos.length
+    }
   }
 }
 </script>
