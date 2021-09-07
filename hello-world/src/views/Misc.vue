@@ -244,6 +244,13 @@
                 <DatePicker @change="showDatePickerChange"></DatePicker>
             </div>
         </div>
+
+        <hr>
+        <div>
+            <h3>Template refs</h3>
+            <InputWithRef ref="firstInput" @click="$refs.secondInput.focusIt()"></InputWithRef>
+            <InputWithRef ref="secondInput" @click="$refs.firstInput.focusIt()"></InputWithRef>
+        </div>
     </div>
 </template>
 
@@ -260,7 +267,7 @@ import VForComponent from '../components/VForComponent.vue'
 import Tabhome from '../components/Tabhome.vue'
 import Tabposts from '../components/Tabposts.vue'
 import DatePicker from '../components/DatePicker.vue'
-import AsyncComponent from '../components/AsyncComponent.vue'
+import InputWithRef from '../components/InputWithRef.vue'
 
 export default {
     components: {
@@ -280,7 +287,7 @@ export default {
                 }, 500);
             })
         )),
-        AsyncComponent
+        InputWithRef
     },
     data: () => ({
         helloWorld: 'Hello World!',
@@ -343,7 +350,7 @@ export default {
         },
         showDatePickerChange(event) {
             alert(event.target.value)
-        }
+        },
     }
 }
 </script>
