@@ -24,17 +24,26 @@
             <EmitModifier v-model.capitalize="bookTitle"></EmitModifier>
             {{ bookTitle }}
         </div>
+
+        <hr>
+        <div>
+            <h3>v-model binding with arguments</h3>
+            <BindArgument v-model:description.capitalize="bookTitle"></BindArgument>
+            {{ bookTitle }}
+        </div>
     </div>
 </template>
 
 <script>
 import EmitUpdate from '../components/EmitUpdate.vue'
 import EmitModifier from '../components/EmitModifier.vue'
+import BindArgument from '../components/BindArgument.vue'
 
 export default {
     components: {
         EmitUpdate,
-        EmitModifier
+        EmitModifier,
+        BindArgument
     },
     emits: {
         submit: ({ email, password }) => {
