@@ -218,6 +218,14 @@
                 <component :is="currentTabComponent"></component>
             </div>
         </div>
+
+        <hr>
+        <div>
+            <h3>Select Option Attribute Inheritance</h3>
+            <div>
+                <DatePicker @change="showDatePickerChange"></DatePicker>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -231,6 +239,7 @@ import DynamicArgument from '../components/DynamicArgument.vue'
 import VForComponent from '../components/VForComponent.vue'
 import Tabhome from '../components/Tabhome.vue'
 import Tabposts from '../components/Tabposts.vue'
+import DatePicker from '../components/DatePicker.vue'
 
 export default {
     components: {
@@ -242,6 +251,7 @@ export default {
         DynamicArgument,
         VForComponent,
         Tabhome, Tabposts,
+        DatePicker
     },
     data: () => ({
         helloWorld: 'Hello World!',
@@ -301,6 +311,9 @@ export default {
         },
         two: function () {
             alert('two')
+        },
+        showDatePickerChange(event) {
+            alert(event.target.value)
         }
     }
 }
