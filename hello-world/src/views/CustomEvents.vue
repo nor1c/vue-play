@@ -14,18 +14,18 @@
         <hr>
         <div>
             <h3>v-model Arguments</h3>
-            <EmitCompOne v-model:title="bookTitle"></EmitCompOne>
+            <EmitUpdate v-model:title="bookTitle"></EmitUpdate>
             {{ bookTitle }}
         </div>
     </div>
 </template>
 
 <script>
-import EmitCompOne from '../components/EmitCompOne.vue'
+import EmitUpdate from '../components/EmitUpdate.vue'
 
 export default {
     components: {
-        EmitCompOne
+        EmitUpdate
     },
     emits: {
         submit: ({ email, password }) => {
