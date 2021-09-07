@@ -25,6 +25,7 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/simple-todo-list-app', name: 'Simple To-do List App', component: () => import('../views/TodoListApp.vue') },
   { path: '/custom-events', name: 'Custom Events', component: () => import('../views/CustomEvents.vue') },
   { path: '/provide-inject', name: 'Provide-Inject', component: () => import('../components/ProvideList.vue') },
+  { path: '/transition-animation', name: 'Transition and Animation', component: () => import('../views/TransitionAnimation.vue') },
 ]
 
 const router = createRouter({
