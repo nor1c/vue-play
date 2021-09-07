@@ -66,6 +66,26 @@
         </transition-group>
       </div>
     </div>
+
+    <hr>
+    <div>
+      <h3>Staggering List Transitions</h3>
+      <div>
+        <input type="text" v-model="query">
+        <transition-group
+          name="staggered-fade"
+          tag="ul"
+          :css="false"
+          @before-enter="beforeEnter"
+          @enter="enter"
+          @leave="leave"
+        >
+          <li v-for="(item, index) in computedList" :key="item.msg" :data-index="index">
+            {{ item.msg }}
+          </li>
+        </transition-group>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -76,8 +96,22 @@ export default {
     x: 0,
     show: false,
     items: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    nextNum: 10
+    nextNum: 10,
+    query: '',
+    list: [
+      { msg: 'Bruce Lee' },
+      { msg: 'Jackie Chan' },
+      { msg: 'Chuck Norris' }
+    ]
   }),
+  computed: {
+    computedList() {
+      let vm = this
+      return this.list.filter(item => {
+        return item.msg.toLowerCase().indexOf(vm.query.toLowerCase()) !== -1
+      })
+    }
+  },
   methods: {
     xCoordinate(e) {
       this.x = e.clientX
@@ -93,6 +127,29 @@ export default {
     },
     shuffle() {
       this.items = _.shuffle(this.items)
+    },
+    beforeEnter(el) {
+      console.log('entering...')
+      el.style.opacity = 0
+      el.style.height = 0
+    },
+    enter(el, done) {
+      console.log('enter')
+      gsap.to(el, {
+        opacity: 1,
+        height: '1.6em',
+        delay: el.dataset.index * 0.15,
+        onComplete: done
+      })
+    },
+    leave(el, done) {
+      console.log('leaving..')
+      gsap.to(el, {
+        opacity: 0,
+        height: 0,
+        delay: el.dataset.index * 0.15,
+        onComplete: done
+      })
     }
   }
 }
