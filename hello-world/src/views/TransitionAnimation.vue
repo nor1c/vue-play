@@ -48,6 +48,24 @@
         </transition-group>
       </div>
     </div>
+
+    <hr>
+    <div>
+      <h3>List Move Transitions</h3>
+      <div>
+        <button @click="shuffle">Shuffle</button>
+        <transition-group name="flip-list" tag="ul">
+          <li v-for="item in items" :key="item">
+            {{ item }}
+          </li>
+        </transition-group>
+        <transition-group name="list-complete" tag="p">
+          <span v-for="item in items" :key="item" class="list-complete-item">
+            {{ item }}
+          </span>
+        </transition-group>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -72,6 +90,9 @@ export default {
     },
     remove() {
       this.items.splice(this.randomIndex(), 1)
+    },
+    shuffle() {
+      this.items = _.shuffle(this.items)
     }
   }
 }
@@ -131,5 +152,23 @@ export default {
 .list-leave-to {
   opacity: 0;
   transform: translateY(30px);
+}
+.list-complete-item {
+  transition: all 0.8s ease;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.list-complete-enter-from,
+.list-complete-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.list-complete-leave-active {
+  position: absolute;
+}
+.flip-list-move {
+  transition: transform 0.8s ease;
 }
 </style>
