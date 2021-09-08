@@ -123,8 +123,30 @@ export default {
     }
     provide('changeLocationFromChild', changeLocationToJakartaFromChild)
 
-    // count
+    // access in reactive objects
     const count = ref(0)
+    const state = reactive({
+      count
+    })
+
+    console.log('State count: ', state.count) // output: 0
+
+    state.count = 1
+    console.log('State count: ', state.count) // output: undefined
+    console.log('(state) count value: ', count.value) // output: 1
+
+    // assign new ref to a property linked to an existing ref (will replace the old ref)
+    const otherCount = ref(2)
+    state.count = otherCount
+    console.log('Other count:', state.count) // output: 2
+    console.log(count.value) // output: 1
+
+    // ref unwrapping only happens when nested inside a reactive object. There is no unwrapping eprformed when the ref is accessed from an Array or a native collection type like Map.
+    const books = reactive([ref('Vue 3 Guide')])
+    console.log('Books: ', books[0].value) // need .value here
+
+    const map = reactive(new Map([['count', ref(0)]]))
+    console.log('Map: ', map.get('count').value)
 
     return {
       counter,
