@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { ref, toRefs, onMounted, watch, computed } from 'vue'
+import { ref, toRefs, onMounted, watch, computed, toRef } from 'vue'
 
 export default {
   props: {
@@ -28,8 +28,20 @@ export default {
       required: true
     }
   },
-  setup(props) {
+  setup(props, context) {
     const { user } = toRefs(props)
+    const { optionalProp } = toRef(props, 'optionalProp') // optional prop used toRef() instead of toRefs()
+
+    console.log(context)
+
+    // attributes (non-reactive object)
+    console.log(context.attrs)
+
+    // slots (non-reactive object)
+    console.log(context.slots)
+
+    // emit events (method)
+    console.log(context.emit)
 
     const counter = ref(0)
     console.log(counter.value) // output: 0
