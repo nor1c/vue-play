@@ -23,5 +23,10 @@ app.mixin({
     console.log(this.$options.custom)
   }
 })
+app.directive('focus', {
+  mounted(el) {
+    el.focus()
+  }
+})
 app.use(router)
 app.mount('#app')

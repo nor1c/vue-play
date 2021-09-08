@@ -14,6 +14,7 @@
     <router-link to="/transition-animation">Transition and Animation</router-link> | 
     <router-link to="/composition-api">Composition API</router-link> | 
     <router-link to="/mixins">Mixins</router-link> | 
+    <router-link to="/custom-directive">Custom Directive</router-link> | 
     <router-link to="/misc">Misc</router-link>
   </div>
   <router-view/>
