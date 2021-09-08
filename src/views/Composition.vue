@@ -15,6 +15,7 @@
       <div><a href="/separated-composition-api">Separeted Composition API</a></div>
       <div><a href="/composition-usage-with-templates">Usage with Templates</a></div>
       <UsageWithTemplates :collectionName="'Anything'"></UsageWithTemplates>
+      <UsageWithRenderFunc :collectionName="'Anything'"></UsageWithRenderFunc>
     </div>
   </div>
 </template>
@@ -23,10 +24,12 @@
 import { ref, toRefs, onMounted, watch, computed, toRef } from 'vue'
 
 import UsageWithTemplates from '../views/CompositionUsageWithTemplates.vue'
+import UsageWithRenderFunc from '../views/CompositionUsageWithRenderFunction.vue'
 
 export default {
   components: {
-    UsageWithTemplates
+    UsageWithTemplates,
+    UsageWithRenderFunc
   },
   props: {
     user: {
