@@ -251,6 +251,29 @@
             <InputWithRef ref="firstInput" @click="$refs.secondInput.focusIt()"></InputWithRef>
             <InputWithRef ref="secondInput" @click="$refs.firstInput.focusIt()"></InputWithRef>
         </div>
+
+        <hr>
+        <div>
+            <h3>Teleports</h3>
+            <div>
+                <div>
+                    <div>
+                        <teleport to="body">
+                            <h3>Teleport to body tag</h3>
+                        </teleport>
+                        <teleport to="#whatever">
+                            <p>A</p>
+                        </teleport>
+                        <teleport to="#whatever">
+                            <p>B</p>
+                        </teleport>
+                    </div>
+                </div>
+            </div>
+            <div id="whatever">
+                anything
+            </div>
+        </div>
     </div>
 </template>
 
