@@ -14,9 +14,7 @@
     <hr>
     <div>
       <h3>Dynamic Directive Arguments</h3>
-      <div v-bg-color:[color]="'black'" :style="{ width: '200px', height: '200px' }">
-        the text
-      </div>
+      <div v-bg-color:[color]="'black'" v-inside="{ text: 'hello!', style: 'italic' }" :style="{ width: '200px', height: '200px' }"></div>
     </div>
   </div>
 </template>
@@ -36,6 +34,10 @@ export default {
       el.style.background = binding.value
       el.style.color = binding.arg || 'black'
     },
+    inside: (el, binding) => {
+      el.innerHTML = binding.value.text
+      el.style.fontStyle = binding.value.style
+    }
   }
 }
 </script>
