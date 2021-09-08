@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { ref, toRefs, onMounted, watch, computed, toRef, provide, reactive } from 'vue'
+import { ref, toRefs, onMounted, watch, computed, toRef, provide, reactive, readonly } from 'vue'
 
 import UsageWithTemplates from '../views/CompositionUsageWithTemplates.vue'
 import UsageWithRenderFunc from '../views/CompositionUsageWithRenderFunction.vue'
@@ -100,7 +100,7 @@ export default {
       latitude: 135
     })
 
-    provide('location', location)
+    provide('location', readonly(location))
     provide('geoLocation', geoLocation)
 
     // method to change current location to Jakarta
