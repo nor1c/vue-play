@@ -14,13 +14,18 @@
     <hr>
     <div>
       <h3>Dynamic Directive Arguments</h3>
-      <div v-bg-color="'black'" :style="{ width: '200px', height: '200px' }"></div>
+      <div v-bg-color:[color]="'black'" :style="{ width: '200px', height: '200px' }">
+        the text
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  data: () => ({
+    color: 'white'
+  }),
   directives: {
     focusLocally: {
       mounted(el) {
@@ -30,6 +35,7 @@ export default {
     bgColor: {
       mounted(el, binding) {
         el.style.background = binding.value
+        el.style.color = binding.arg || 'black'
       }
     },
   }
