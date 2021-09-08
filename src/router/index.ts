@@ -28,6 +28,7 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/transition-animation', name: 'Transition and Animation', component: () => import('../views/TransitionAnimation.vue') },
   { path: '/composition-api', name: 'Composition API', component: () => import('../views/Composition.vue') },
   { path: '/separated-composition-api', name: 'Separated Composition API', component: () => import('../views/SeparatedComposition.vue') },
+  { path: '/composition-usage-with-templates', name: 'Composition Usage with Tempaltes', component: () => import('../views/CompositionUsageWithTemplates.vue') },
 ]
 
 const router = createRouter({

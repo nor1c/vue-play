@@ -12,8 +12,9 @@
 
     <hr>
     <div>
-      <h3>Separated Composition API</h3>
-      <a href="/separated-composition-api">Separeted Composition API</a>
+      <div><a href="/separated-composition-api">Separeted Composition API</a></div>
+      <div><a href="/composition-usage-with-templates">Usage with Templates</a></div>
+      <UsageWithTemplates :collectionName="'Anything'"></UsageWithTemplates>
     </div>
   </div>
 </template>
@@ -21,11 +22,16 @@
 <script>
 import { ref, toRefs, onMounted, watch, computed, toRef } from 'vue'
 
+import UsageWithTemplates from '../views/CompositionUsageWithTemplates.vue'
+
 export default {
+  components: {
+    UsageWithTemplates
+  },
   props: {
     user: {
       type: String,
-      required: true
+      required: true,
     }
   },
   setup(props, context) {
@@ -50,7 +56,7 @@ export default {
 
     const repositories = ref([])
     const getUserRepositories = async () => {
-      repositories.value = await fetchUserRespositories(props.user)
+      // repositories.value = await fetchUserRespositories(props.user)
     }
 
     // mounted
