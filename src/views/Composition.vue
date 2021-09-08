@@ -16,6 +16,7 @@
       <div><a href="/composition-usage-with-templates">Usage with Templates</a></div>
       <UsageWithTemplates :collectionName="'Anything'"></UsageWithTemplates>
       <UsageWithRenderFunc :collectionName="'Anything'"></UsageWithRenderFunc>
+      <div><a href="/template-refs">Template Refs</a></div>
     </div>
 
     <hr>
