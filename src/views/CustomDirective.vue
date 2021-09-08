@@ -1,14 +1,26 @@
 <template>
   <div>
     <div>
-      <h3>Custom Directive</h3>
-      <input type="text" v-focus placeholder="Try to reload this page, the custom directive `v-focus` will auto focusing on me." size="70">
+      <h3>Custom Directive (globally)</h3>
+      <input type="text" v-focus placeholder="Try to reload this page, the custom directive `v-focus` will auto focusing on me. (globally)" size="80">
+    </div>
+
+    <hr>
+    <div>
+      <h3>Custom Directive but from component (locally)</h3>
+      <input type="text" v-focus-locally placeholder="Auto focus but for this component only (locally, not globally)" size="50">
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  
+  directives: {
+    focusLocally: {
+      mounted(el) {
+        el.focus()
+      }
+    }
+  }
 }
 </script>
