@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 export default {
   props: {
@@ -28,6 +28,8 @@ export default {
     const getUserRepositories = async () => {
       repositories.value = await fetchUserRespositories(props.user)
     }
+
+    onMounted(getUserRepositories)
 
     return {
       repositories, getUserRepositories
