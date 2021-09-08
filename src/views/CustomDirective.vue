@@ -10,6 +10,12 @@
       <h3>Custom Directive but from component (locally)</h3>
       <input type="text" v-focus-locally placeholder="Auto focus but for this component only (locally, not globally)" size="50">
     </div>
+
+    <hr>
+    <div>
+      <h3>Dynamic Directive Arguments</h3>
+      <div v-bg-color="'black'" :style="{ width: '200px', height: '200px' }"></div>
+    </div>
   </div>
 </template>
 
@@ -20,7 +26,12 @@ export default {
       mounted(el) {
         el.focus()
       }
-    }
+    },
+    bgColor: {
+      mounted(el, binding) {
+        el.style.background = binding.value
+      }
+    },
   }
 }
 </script>
