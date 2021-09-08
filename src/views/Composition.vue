@@ -17,19 +17,27 @@
       <UsageWithTemplates :collectionName="'Anything'"></UsageWithTemplates>
       <UsageWithRenderFunc :collectionName="'Anything'"></UsageWithRenderFunc>
     </div>
+
+    <hr>
+    <div>
+      <h3>Provide/Inject</h3>
+      <MyMarker/>
+    </div>
   </div>
 </template>
 
 <script>
-import { ref, toRefs, onMounted, watch, computed, toRef } from 'vue'
+import { ref, toRefs, onMounted, watch, computed, toRef, provide } from 'vue'
 
 import UsageWithTemplates from '../views/CompositionUsageWithTemplates.vue'
 import UsageWithRenderFunc from '../views/CompositionUsageWithRenderFunction.vue'
+import MyMarker from '../components/MyMarker.vue'
 
 export default {
   components: {
     UsageWithTemplates,
-    UsageWithRenderFunc
+    UsageWithRenderFunc,
+    MyMarker
   },
   props: {
     user: {
@@ -82,6 +90,12 @@ export default {
       return respositories.value.filter(
         repository => repository.name.includes(searchQuery.value)
       )
+    })
+
+    provide('location', 'North Pole')
+    provide('geoLocation', {
+      longitude: 90,
+      latitude: 135
     })
 
     return {
