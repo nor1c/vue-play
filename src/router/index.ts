@@ -30,6 +30,7 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/separated-composition-api', name: 'Separated Composition API', component: () => import('../views/SeparatedComposition.vue') },
   { path: '/composition-usage-with-templates', name: 'Composition Usage with Tempaltes', component: () => import('../views/CompositionUsageWithTemplates.vue') },
   { path: '/template-refs', name: 'Template Refs', component: () => import('../views/CompositionTemplateRefs.vue') },
+  { path: '/mixins', name: 'Mixins', component: () => import('../views/Mixins.vue') },
 ]
 
 const router = createRouter({
