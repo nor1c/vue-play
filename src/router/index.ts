@@ -27,6 +27,7 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/provide-inject', name: 'Provide-Inject', component: () => import('../components/ProvideList.vue') },
   { path: '/transition-animation', name: 'Transition and Animation', component: () => import('../views/TransitionAnimation.vue') },
   { path: '/composition-api', name: 'Composition API', component: () => import('../views/Composition.vue') },
+  { path: '/separated-composition-api', name: 'Separated Composition API', component: () => import('../views/SeparatedComposition.vue') },
 ]
 
 const router = createRouter({
