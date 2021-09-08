@@ -26,6 +26,7 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/custom-events', name: 'Custom Events', component: () => import('../views/CustomEvents.vue') },
   { path: '/provide-inject', name: 'Provide-Inject', component: () => import('../components/ProvideList.vue') },
   { path: '/transition-animation', name: 'Transition and Animation', component: () => import('../views/TransitionAnimation.vue') },
+  { path: '/composition-api', name: 'Composition API', component: () => import('../views/Composition.vue') },
 ]
 
 const router = createRouter({
