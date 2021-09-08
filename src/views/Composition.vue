@@ -22,12 +22,13 @@
     <div>
       <h3>Provide/Inject</h3>
       <MyMarker/>
+      <button @click="changeLocationToJakarta">Change location to Jakarta</button>
     </div>
   </div>
 </template>
 
 <script>
-import { ref, toRefs, onMounted, watch, computed, toRef, provide } from 'vue'
+import { ref, toRefs, onMounted, watch, computed, toRef, provide, reactive } from 'vue'
 
 import UsageWithTemplates from '../views/CompositionUsageWithTemplates.vue'
 import UsageWithRenderFunc from '../views/CompositionUsageWithRenderFunction.vue'
@@ -92,15 +93,31 @@ export default {
       )
     })
 
-    provide('location', 'North Pole')
-    provide('geoLocation', {
+    // using reactivity on provide/inject
+    const location = ref('North Pole')
+    const geoLocation = reactive({
       longitude: 90,
       latitude: 135
     })
 
+    provide('location', location)
+    provide('geoLocation', geoLocation)
+
+    // method to change current location to Jakarta
+    const changeLocationToJakarta = () => {
+      console.log('changing location to Jakarta...')
+      location.value = 'Jakarta'
+    }
+
+    const changeLocationToJakartaFromChild = () => {
+      location.value = 'Jakarta'
+    }
+    provide('changeLocationFromChild', changeLocationToJakartaFromChild)
+
     return {
       counter,
-      repositories, getUserRepositories, repositoriesMatchingSearchQuery
+      repositories, getUserRepositories, repositoriesMatchingSearchQuery,
+      changeLocationToJakarta
     }
   },
   data: () => ({
