@@ -8,6 +8,7 @@
 import HelloMixin from '../mixins/HelloMixin'
 
 export default {
+  globalMixinHello: 'Global mixin hello but from the child.',
   mixins: [HelloMixin],
   methods: {
     conflicting() {
