@@ -32,11 +32,9 @@ export default {
         el.focus()
       }
     },
-    bgColor: {
-      mounted(el, binding) {
-        el.style.background = binding.value
-        el.style.color = binding.arg || 'black'
-      }
+    bgColor: (el, binding) => {
+      el.style.background = binding.value
+      el.style.color = binding.arg || 'black'
     },
   }
 }
