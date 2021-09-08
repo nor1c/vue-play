@@ -3,13 +3,17 @@
     <h1>Composition API</h1>
     <hr>
     <div>
-      <h3></h3>
+      <h3>Basic Example of Composition API</h3>
+      <div>
+        {{ counter }}
+        <button @click="counter++">Increase</button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 
 export default {
   props: {
@@ -29,10 +33,17 @@ export default {
       repositories.value = await fetchUserRespositories(props.user)
     }
 
+    // mounted
     onMounted(getUserRepositories)
 
+    // watchers
+    watch(counter, (newValue, oldValue) => {
+      console.log(`The new counter value is ${counter.value}`)
+    })
+
     return {
-      repositories, getUserRepositories
+      counter,
+      repositories, getUserRepositories,
     }
   },
   data: () => ({
