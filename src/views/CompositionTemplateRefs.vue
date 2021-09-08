@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { ref, onMounted, reactive, onBeforeUpdate } from 'vue'
+import { ref, onMounted, reactive, onBeforeUpdate, watchEffect } from 'vue'
 
 export default {
   setup() {
@@ -23,13 +23,22 @@ export default {
       console.log(root.value) // output: This is a root element.
     })
 
+    watchEffect(() => {
+      // This effect runs before the DOM is updated, and consequently,
+      // the template ref does not hold a reference to the element yet.
+      console.log(root.value) // output: null
+    })
+
+    watchEffect(() => {
+      console.log(root.value) // output: <div>This is a root element.</div>
+    }, { flush: 'post' })
+
     // usage inside v-for
     const list = reactive([1, 2, 3])
     const divs = ref([])
 
     // make sure to reset the refs before each update
     onBeforeUpdate(() => {
-      console.log('updating...')
       divs.value = []
       console.log(divs)
     })
