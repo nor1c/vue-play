@@ -1,10 +1,19 @@
 <template>
   <div ref="root">This is a root element.</div>
   {{ root }}
+
+  <hr>
+  <div>
+    <h3>Usage inside v-for</h3>
+    <div v-for="(item, i) in list" :ref="el => { if (el) divs[i] = el }" :key="i">
+      {{ item }}
+    </div>
+    <button @click="addItem">Add item</button>
+  </div>
 </template>
 
 <script>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, reactive, onBeforeUpdate } from 'vue'
 
 export default {
   setup() {
@@ -14,8 +23,26 @@ export default {
       console.log(root.value) // output: This is a root element.
     })
 
+    // usage inside v-for
+    const list = reactive([1, 2, 3])
+    const divs = ref([])
+
+    // make sure to reset the refs before each update
+    onBeforeUpdate(() => {
+      console.log('updating...')
+      divs.value = []
+      console.log(divs)
+    })
+
+    const addItem = () => {
+      list.push(list.length)
+    }
+
     return {
-      root
+      root,
+      list,
+      divs,
+      addItem
     }
   }
 }
