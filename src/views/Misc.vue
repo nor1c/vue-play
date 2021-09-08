@@ -274,6 +274,16 @@
                 anything
             </div>
         </div>
+
+        <hr>
+        <div>
+            <h3>Render Function</h3>
+            <div>
+                <anchored-heading :level="1">passed 1, this should be h1</anchored-heading>
+                <anchored-heading :level="2">passed 2, this should be h1</anchored-heading>
+                <anchored-heading :level="3">passed 3, this should be h1</anchored-heading>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -291,6 +301,7 @@ import Tabhome from '../components/Tabhome.vue'
 import Tabposts from '../components/Tabposts.vue'
 import DatePicker from '../components/DatePicker.vue'
 import InputWithRef from '../components/InputWithRef.vue'
+import AnchoredHeading from '../components/AnchoredHeading.vue'
 
 export default {
     components: {
@@ -310,7 +321,8 @@ export default {
                 }, 500);
             })
         )),
-        InputWithRef
+        InputWithRef,
+        AnchoredHeading
     },
     data: () => ({
         helloWorld: 'Hello World!',
