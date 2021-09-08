@@ -25,6 +25,14 @@
       <MyMarker/>
       <button @click="changeLocationToJakarta">Change location to Jakarta</button>
     </div>
+
+    <hr>
+    <div>
+      <h3>Ref Unwrapping</h3>
+      <span>{{ count }}</span>
+      <button @click="count++">Increment count</button>
+      <button @click="nested.count.value++">Nested increment count</button>
+    </div>
   </div>
 </template>
 
@@ -115,10 +123,17 @@ export default {
     }
     provide('changeLocationFromChild', changeLocationToJakartaFromChild)
 
+    // count
+    const count = ref(0)
+
     return {
       counter,
       repositories, getUserRepositories, repositoriesMatchingSearchQuery,
-      changeLocationToJakarta
+      changeLocationToJakarta,
+      count, 
+      nested: reactive({ // this will not update the count
+        count
+      })
     }
   },
   data: () => ({
