@@ -182,6 +182,17 @@ export default {
     console.log(book.description) // output: Description changed
 
 
+    // Prevent mutating reactive objects with 'readonly'
+    const original = reactive({ count: 0 })
+    const copy = readonly(original)
+
+    original.count++
+    console.log('Original count: ', original.count) // output: 1
+
+    copy.count++ // output: Set operation on key "count" failed: target is readonly
+    console.log('Copy count: ', copy.count) // output: 1
+
+
 
     return {
       counter,
