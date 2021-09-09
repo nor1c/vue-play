@@ -102,6 +102,8 @@ export default {
       )
     })
 
+
+
     // using reactivity on provide/inject
     const location = ref('North Pole')
     const geoLocation = reactive({
@@ -123,6 +125,8 @@ export default {
     }
     provide('changeLocationFromChild', changeLocationToJakartaFromChild)
 
+
+
     // access in reactive objects
     const count = ref(0)
     const state = reactive({
@@ -143,21 +147,54 @@ export default {
 
     // ref unwrapping only happens when nested inside a reactive object. There is no unwrapping eprformed when the ref is accessed from an Array or a native collection type like Map.
     const books = reactive([ref('Vue 3 Guide')])
-    console.log('Books: ', books[0].value) // need .value here
+    console.log('Books: ', books[0].value) // need .value here // output: Vue 3 Guide
 
     const map = reactive(new Map([['count', ref(0)]]))
-    console.log('Map: ', map.get('count').value)
+    console.log('Map: ', map.get('count').value) // output: 0
+
+
+
+    // Destructing reactive state
+    const book = reactive({
+      author: 'Vue Team',
+      year: '2020',
+      title: 'Vue 3 Guide',
+      description: 'You are reading this book right now',
+      price: 'free'
+    })
+    let { author } = book
+    console.log('Book author: ', author) // output: Vue Team
+
+    // author.value = 'Vue Core Member'
+    console.log('Book author updated: ', author) // output: will return error
+
+    // to prevent error, use toRefs on book var
+    let { title } = toRefs(book)
+    console.log('Book title (toRefs) ', book.title) // should use .value, output: Vue 3 Guide
+
+    title.value = 'Vue 3 Detailed Guide'
+    console.log('Book title (toRefs) ', book.title) // output: Vue 3 Detailed Guide
+
+    // without desctructing
+    console.log(book.description) // output: You are reading this book right now
+    
+    book.description = 'Description changed'
+    console.log(book.description) // output: Description changed
+
+
 
     return {
       counter,
       repositories, getUserRepositories, repositoriesMatchingSearchQuery,
       changeLocationToJakarta,
       count, 
-      nested: reactive({ // this will not update the count
+      nested: reactive({ // when using reactive(), it will not update the count
         count
       })
     }
   },
+
+  // Options API
   data: () => ({
     filters: {},
     searchQuery: ''
