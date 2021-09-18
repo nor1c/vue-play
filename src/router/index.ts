@@ -34,6 +34,8 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/custom-directive', name: 'Custom Directive', component: () => import('../views/CustomDirective.vue') },
   { path: '/playground', name: 'Playground', component: () => import('../views/Playground.vue') },
   { path: '/composition-reactive', component: () => import('../views/CompositionReactive.vue') },
+  { path: '/composition-custom-ref', component: () => import('../views/CompositionCustomRef.vue') },
+  { path: '/change-data-between-components', component: () => import('../views/change-data-between-components/Display.vue') },
 ]
 
 const router = createRouter({

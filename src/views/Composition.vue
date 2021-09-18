@@ -4,7 +4,8 @@
     <hr>
     <h1>Menu</h1>
     <div>
-      <a href="/composition-reactive">Reactive</a>
+      <div><a href="/composition-reactive">Reactive</a></div>
+      <div><a href="/composition-custom-ref">Custom Ref</a></div>
     </div>
 
     <hr>

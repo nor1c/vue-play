@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, reactive, toRefs, isReactive, readonly, isProxy, isReadonly, toRaw, markRaw, shallowReactive, shallowReadonly } from 'vue'
+import { defineComponent, ref, reactive, toRefs, isReactive, readonly, isProxy, isReadonly, toRaw, markRaw, shallowReactive, shallowReadonly, Ref, toRef, isRef, shallowRef } from 'vue'
 
 function useFeatureX () {
   const state = reactive({
@@ -22,11 +22,15 @@ function useFeatureX () {
   return stateAsRefs
 }
 
+function count (prop: Ref<any>) {
+  prop.value++
+}
+
 export default defineComponent({
   setup() {
 
   // ::: Reactivity (ref, reactive, toRefs)
-    const name = ref('Evan You')
+    const name: Ref<string> = ref('Evan You')
     const state = useFeatureX()
 
     setTimeout(() => {
@@ -110,6 +114,53 @@ export default defineComponent({
     // shallowReadonlyState.foo++ // error: Cannot assign to 'foo' because it is a read-only property. <- non-reactive
     shallowReadonlyState.nested.bar++ // output: 3 <- reactive
 
+
+  // ::: toRef
+    const toRefState = reactive({
+      foo: 1,
+      bar: 2
+    })
+    const fooRef = toRef(toRefState, 'foo')
+    console.log('fooRef:', fooRef.value) // output: 1
+
+    toRefState.foo++ // output: 2
+    fooRef.value++ // output: 3
+
+    const barRef = toRef(toRefState, 'bar')
+    count(barRef) // sum 1
+    console.log('barRef:', toRefState.bar) // output: 3
+
+
+  // ::: toRefs
+    const toRefsState = reactive({
+      foo: 1,
+      bar: 2
+    })
+
+    const toRefsStateRefs = toRefs(toRefsState)
+    /*
+      type of toRefsStateRefs:
+      {
+        foo: Ref<number>,
+        bar: Ref<number>
+      }
+     */
+    toRefsState.foo++ // output: 2
+    console.log('(toRefs: raw->refs) toRefsStateRefs.foo.value:', toRefsStateRefs.foo.value) // output: 2
+
+    toRefsStateRefs.foo.value++ // output: 3
+    console.log('(toRefs: raw) toRefsState.foo:', toRefsState.foo) // output: 3
+
+    console.log('Is {toRefsState.foo} a refs:', isRef(toRefsState.foo)) // output: false
+    console.log('Is {toRefsStateRefs.foo} a refs:', isRef(toRefsStateRefs.foo)) // output: false
+
+
+  // ::: shallowRef
+    const shallowFoo = shallowRef({})
+    shallowFoo.value = {}
+    console.log('shallowFoo.value:', shallowFoo.value)
+
+    console.log('Is {shallowFoo.value} reactive:', isReactive(shallowFoo.value)) // output: false
 
     return {
       name,
