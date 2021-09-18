@@ -2,6 +2,12 @@
   <div>
     <h1>Composition API</h1>
     <hr>
+    <h1>Menu</h1>
+    <div>
+      <a href="/composition-reactive">Reactive</a>
+    </div>
+
+    <hr>
     <div>
       <h3>Basic Example of Composition API</h3>
       <div>
@@ -191,6 +197,24 @@ export default {
 
     copy.count++ // output: Set operation on key "count" failed: target is readonly
     console.log('Copy count: ', copy.count) // output: 1
+
+
+
+    // Computed
+    const compCount = ref(1)
+
+    const plusOne = computed(() => compCount.value + 1)
+    console.log(plusOne.value) // output: 2
+    plusOne.value++ // error (Immutable)
+
+    const plusTwo = computed({
+      get: () => compCount.value + 1,
+      set: val => {
+        compCount.value = val - 1
+      }
+    })
+    plusTwo.value = 2
+    console.log('Computed mutable: ', compCount.value) // output: 0
 
 
 

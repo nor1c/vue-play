@@ -32,6 +32,8 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/template-refs', name: 'Template Refs', component: () => import('../views/CompositionTemplateRefs.vue') },
   { path: '/mixins', name: 'Mixins', component: () => import('../views/Mixins.vue') },
   { path: '/custom-directive', name: 'Custom Directive', component: () => import('../views/CustomDirective.vue') },
+  { path: '/playground', name: 'Playground', component: () => import('../views/Playground.vue') },
+  { path: '/composition-reactive', component: () => import('../views/CompositionReactive.vue') },
 ]
 
 const router = createRouter({
